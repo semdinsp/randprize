@@ -77,7 +77,7 @@ class RandprizeTest < Test::Unit::TestCase
       end
    end
    def test_randomprize_forrandom
-       steps=2000
+       steps=4000
        count=0
        1.upto(steps)  do
         @pm.prize_list(@headstails)
