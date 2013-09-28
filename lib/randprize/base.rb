@@ -6,6 +6,10 @@ module Randprize
   def debug
     true
   end
+  def initialize
+    # puts "Running a few random numbers to settle random generator"
+    1.upto(10000) {|i| self.rand }
+  end
   def random_generator
     self.randgen=Random.new if self.randgen==nil
     self.randgen
@@ -20,7 +24,8 @@ module Randprize
   def set_range(range)
     self.myrange=range
   end
-  def rand_range
+ 
+  def random_range
     self.random_generator.rand(self.myrange)
   end
 
