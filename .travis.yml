@@ -1,0 +1,14 @@
+language: ruby
+rvm:
+  - "2.0.0"
+gemfile: Gemfile
+script: cd test; ruby randprize.rb
+notifications:
+  recipients:
+    - scott.sproule@estormtech.com
+  email:
+    on_success: change
+    on_failure: always
+addons:
+  code_climate:
+    repo_token: cf87466bcfc15afc0f38b6492100621cd344c5baf63f647028e63a868a66fdca
