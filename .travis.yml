@@ -1,8 +1,10 @@
 language: ruby
+before_install:
+  - travis_retry gem install bundler
 rvm:
   - "2.0.0"
 gemfile: Gemfile
-script: cd test; ruby randprize.rb
+script: bundle install; cd test; ruby randprize.rb
 notifications:
   recipients:
     - scott.sproule@estormtech.com
