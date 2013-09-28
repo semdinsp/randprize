@@ -12,7 +12,7 @@ module Randprize
     raise 'prizelist must have at least two entries' if self.keylist.size<2
     self.myranges={}
     self.worstoddprize=0
-    self.totalwinodds=0
+    self.totalwinodds=1
     calculate_worst_odds
     normalize_odds
     
