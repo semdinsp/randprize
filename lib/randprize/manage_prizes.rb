@@ -12,16 +12,20 @@ module Randprize
     raise 'prizelist must have at least two entries' if self.keylist.size<2
     self.myranges={}
     self.worstoddprize=0
+    calculate_worst_odds
     normalize_odds
     
   end
-# normalize the odds to the largest odd value.. 
-# odds must be in format 1 in x
-  def normalize_odds
+  def calculate_worst_odds
     self.keylist.each {  |key|
   #    puts "key is #{key} odds are: #{self.myprizelist[key]['odds']}"
       self.worstoddprize=[self.myprizelist[key]['odds'],self.worstoddprize].max if self.myprizelist[key]['odds']!="REMAINING"
     }
+  end
+# normalize the odds to the largest odd value.. 
+# odds must be in format 1 in x
+  def normalize_odds
+    
     start=0
     finish=0
     self.keylist.each {  |key|
@@ -42,10 +46,9 @@ module Randprize
     raise 'prize list does not have full coverage (less prizes than odds) ' if finish<self.worstoddprize
     raise 'prize list has more prizes than coverage (more prizes than odds) ' if finish>self.worstoddprize
   end
+  
   def view_details
-    puts "Prizes: [#{self.myprizelist.inspect}]"
-    puts "Ranges [#{self.myranges.inspect}]"
-     puts "All Prize Range: [#{self.myrange.inspect}]"
+    puts "Prizes: [#{self.myprizelist.inspect}]\nRanges [#{self.myranges.inspect}]\nAll Prize Range: [#{self.myrange.inspect}]"
   end
   def set_prize_range(rng)
     self.myrange=rng
