@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/semdinsp/randprize.png)](https://travis-ci.org/semdinsp/randprize)
+
 randprize gem
 ============
 
