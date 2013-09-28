@@ -9,7 +9,7 @@ class RandprizeTest < Test::Unit::TestCase
     @dice={}
     1.upto(6) {|i| @dice[i.to_s]= {'odds'=> 6,'name'=>"rolled #{i}",'value'=>i} }
     @large={ "GP"=> {'odds'=> 100,'name'=>'grandprize','value'=>50000},"H"=> {'odds'=> 'REMAINING','name'=>'win heads','value'=>1}}
-     @exlarge={ "GP"=> {'odds'=> 50000,'name'=>'grandprize','value'=>50000},"2nd"=> {'odds'=> 5000,'name'=>'2ndprize','value'=>50000},"H"=> {'odds'=> 'REMAINING','name'=>'win heads','value'=>1}}
+     @exlarge={ "GP"=> {'odds'=> 50000,'name'=>'grandprize','value'=>50000},"2nd"=> {'odds'=> 5000,'name'=>'2ndprize','value'=>50000},"H"=> {'odds'=> 'REMAINING','name'=>'win heads','value'=>0}}
     
   end
   
@@ -62,6 +62,12 @@ class RandprizeTest < Test::Unit::TestCase
        assert @pm.check_prize(0)['name']=='rolled 1', "shuld return 1"
         assert @pm.check_prize(5)['name']=='rolled 6', "shuld return 6"
       end
+   end
+   def test_prizestats
+    
+    @pm.prize_list(@exlarge)
+      puts "PRIZE STATISTICIS  #{@pm.worstoddprize}"
+    @pm.prize_statistics
    end
     def test_aaaworstodds
      

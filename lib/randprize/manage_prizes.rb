@@ -2,7 +2,7 @@ require 'rubygems'
 
 module Randprize
   class ManagePrizes < Randprize::Base
-    attr_accessor :myprizelist, :keylist, :myranges, :worstoddprize
+    attr_accessor :myprizelist, :keylist, :myranges, :worstoddprize, :totalwinodds
 # Take the prizes in array and massage the hashlist into something we can use
 # Add ranges
 # eg { key1=>{odds,name,value,key} key3=>{odds,name,value,key}
@@ -12,10 +12,27 @@ module Randprize
     raise 'prizelist must have at least two entries' if self.keylist.size<2
     self.myranges={}
     self.worstoddprize=0
+    self.totalwinodds=0
     calculate_worst_odds
     normalize_odds
     
   end
+  # return statistics about prize list
+  # set non winning value to 0
+  def prize_statistics
+    calculate_total_odds
+    total=self.myrange.max.to_f/self.totalwinodds.to_f
+    puts "Total Odds: 1 in #{total.round}"
+     self.keylist.each {  |key| odds=1
+             odds=self.myrange.max.to_f/self.myprizelist[key]['odds'] if self.myprizelist[key]['odds']!="REMAINING"
+             puts  "----#{self.myprizelist[key]['name']} odds 1 in #{odds.round}"     }
+  end
+  # update total win odds for non zero value prizes
+  def calculate_total_odds
+     self.keylist.each {  |key|
+       self.totalwinodds=self.myprizelist[key]['odds']+self.totalwinodds if self.myprizelist[key]['value'].to_f!=0
+     }
+   end
   def calculate_worst_odds
     self.keylist.each {  |key|
   #    puts "key is #{key} odds are: #{self.myprizelist[key]['odds']}"

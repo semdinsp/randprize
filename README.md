@@ -14,7 +14,7 @@ Prize Hash with odds
     1.upto(6) {|i| @dice[i.to_s]= {'odds'=> 6,'name'=>"rolled #{i}",'value'=>i} }
     @large={ "GP"=> {'odds'=> 100,'name'=>'grandprize','value'=>50000},"H"=> {'odds'=> 'REMAINING','name'=>'win heads','value'=>1}}
 
-The REMAINING flag fills in rest of prize deck with the value
+The REMAINING flag fills in rest of prize deck with the value and should have value 0 for prize statistics
 
 Usage
 =======
