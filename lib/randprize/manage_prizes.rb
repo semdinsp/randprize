@@ -21,7 +21,20 @@ module Randprize
   #    puts "key is #{key} odds are: #{self.myprizelist[key]['odds']}"
       self.worstoddprize=[self.myprizelist[key]['odds'],self.worstoddprize].max if self.myprizelist[key]['odds']!="REMAINING"
     }
+   # puts "worst odds #{self.worstoddprize}"
   end
+#calculate finish odds
+# return two items
+def calculate_finnish_value(akey,start)
+  if self.myprizelist[akey]['odds']=="REMAINING"
+    finish=self.worstoddprize
+  else
+    self.myprizelist[akey]['odds']=self.worstoddprize/self.myprizelist[akey]['odds']
+    finish=self.myprizelist[akey]['odds']+start
+  end
+  finish=finish.round.to_i
+  finish
+end
 # normalize the odds to the largest odd value.. 
 # odds must be in format 1 in x
   def normalize_odds
@@ -29,13 +42,7 @@ module Randprize
     start=0
     finish=0
     self.keylist.each {  |key|
-      if self.myprizelist[key]['odds']=="REMAINING"
-        finish=self.worstoddprize
-      else
-        self.myprizelist[key]['odds']=self.worstoddprize/self.myprizelist[key]['odds']
-        finish=self.myprizelist[key]['odds']+start
-      end
-      finish=finish.round.to_i
+      finish=calculate_finnish_value(key,start)
       self.myranges[key]=(start...finish)  #excludes finish
       start=finish
     }

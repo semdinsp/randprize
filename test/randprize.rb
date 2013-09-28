@@ -63,9 +63,16 @@ class RandprizeTest < Test::Unit::TestCase
         assert @pm.check_prize(5)['name']=='rolled 6', "shuld return 6"
       end
    end
+    def test_aaaworstodds
+     
+      @pm.prize_list(@headstails)
+       puts "worstodds Here:  #{@pm.worstoddprize}"
+      assert @pm.worstoddprize=2,"worst odds set correctly  #{@pm.worstoddprize}"
+    end
    def test_scott
      puts "SCOTTT Here"
      @pm.prize_list(@headstails)
+     assert @pm.worstoddprize=2,"worst odds set correctly"
      aprize=@pm.random_prize
      puts "aprize is #{aprize}, count "
      puts " myrange #{@pm.myrange} rand range returns: #{@pm.random_range}"
