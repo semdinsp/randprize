@@ -4,7 +4,11 @@ before_install:
 rvm:
   - "2.0.0"
 gemfile: Gemfile
-script: bundle install; cd test; ruby randprize.rb
+script: 
+  - bundle
+  - bundle install
+  - cd test; 
+  - ruby randprize.rb
 notifications:
   recipients:
     - scott.sproule@estormtech.com
