@@ -6,6 +6,7 @@ rvm:
 gemfile: Gemfile
 script: 
   - bundle
+  - bundle install
   - cd test; 
   - ruby randprize.rb
 notifications:
