@@ -9,6 +9,7 @@ Gem::Specification.new do |s|
   s.executables = ['']    #should be "name.rb"
   s.files        = Dir["{lib,test}/**/*"] +Dir["bin/*.rb"] + Dir["[A-Z]*"] # + ["init.rb"]
   s.require_path = "lib"
+  s.license = 'MIT'
   s.rubyforge_project = s.name
   s.required_rubygems_version = ">= 1.3.4"
 end
