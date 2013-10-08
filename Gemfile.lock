@@ -8,7 +8,7 @@ GEM
   specs:
     codeclimate-test-reporter (0.1.1)
       simplecov (>= 0.7.1, < 1.0.0)
-    minitest (4.7.5)
+    minitest (5.0.8)
     multi_json (1.8.0)
     simplecov (0.7.1)
       multi_json (~> 1.0)

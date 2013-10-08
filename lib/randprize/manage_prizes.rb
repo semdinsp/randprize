@@ -17,20 +17,25 @@ module Randprize
     normalize_odds
     
   end
+  def prize_statistics_by_prize
+     self.keylist.each {  |key| odds=1
+             keyodds=self.myprizelist[key]['odds']
+             odds=self.myrange.max.to_f/keyodds if keyodds!="REMAINING"
+             puts  "----#{self.myprizelist[key]['name']} odds 1 in #{odds.round}"     }
+  end
   # return statistics about prize list
   # set non winning value to 0
   def prize_statistics
     calculate_total_odds
     total=self.myrange.max.to_f/self.totalwinodds.to_f
     puts "Total Odds: 1 in #{total.round}"
-     self.keylist.each {  |key| odds=1
-             odds=self.myrange.max.to_f/self.myprizelist[key]['odds'] if self.myprizelist[key]['odds']!="REMAINING"
-             puts  "----#{self.myprizelist[key]['name']} odds 1 in #{odds.round}"     }
+    prize_statistics_by_prize
   end
   # update total win odds for non zero value prizes
   def calculate_total_odds
      self.keylist.each {  |key|
-       self.totalwinodds=self.myprizelist[key]['odds']+self.totalwinodds if self.myprizelist[key]['value'].to_f!=0
+       prize=self.myprizelist[key]
+       self.totalwinodds=prize['odds']+self.totalwinodds if prize['value'].to_f!=0
      }
    end
   def calculate_worst_odds
