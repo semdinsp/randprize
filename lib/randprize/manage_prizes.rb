@@ -1,4 +1,3 @@
-require 'rubygems'
 
 module Randprize
   class ManagePrizes < Randprize::Base

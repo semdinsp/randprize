@@ -1,19 +1,21 @@
 PATH
   remote: .
   specs:
-    randprize (0.1.4)
+    randprize (0.1.5)
 
 GEM
   remote: https://rubygems.org/
   specs:
-    codeclimate-test-reporter (0.1.1)
+    codeclimate-test-reporter (0.4.1)
       simplecov (>= 0.7.1, < 1.0.0)
-    minitest (5.0.8)
-    multi_json (1.8.0)
-    simplecov (0.7.1)
+    docile (1.1.5)
+    minitest (5.4.3)
+    multi_json (1.10.1)
+    simplecov (0.9.1)
+      docile (~> 1.1.0)
       multi_json (~> 1.0)
-      simplecov-html (~> 0.7.1)
-    simplecov-html (0.7.1)
+      simplecov-html (~> 0.8.0)
+    simplecov-html (0.8.0)
 
 PLATFORMS
   ruby
